@@ -1,5 +1,6 @@
 import { products } from "../data/products.js";
 import { createProductCard } from "../components/productCard/productCard.js";
+import { addToCart } from "./cart.js";
 
 // ================= GET PRODUCT ID =================
 
@@ -294,10 +295,33 @@ else {
 
   // ================= ADD TO CART =================
 
-  document.getElementById("add-to-cart").addEventListener("click", () => {
-    console.log("Added to cart:", product, "Quantity:", quantity);
+  const addToCartButton = document.getElementById("add-to-cart");
 
-    alert(`${product.name} added to cart!`);
+  addToCartButton.addEventListener("click", () => {
+    const success = addToCart(product.id, quantity);
+
+    if (!success) {
+      return;
+    }
+
+    // Button feedback
+
+    addToCartButton.textContent = "Added to Cart ✓";
+
+    addToCartButton.classList.add("added");
+
+    // Prevent multiple clicks
+    // while showing feedback
+
+    addToCartButton.disabled = true;
+
+    setTimeout(() => {
+      addToCartButton.textContent = "Add to Cart";
+
+      addToCartButton.classList.remove("added");
+
+      addToCartButton.disabled = false;
+    }, 1500);
   });
 
   // ================= RELATED PRODUCTS =================

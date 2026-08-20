@@ -1,9 +1,5 @@
 import { products } from "../data/products.js";
 
-// =====================================================
-// CONFIGURATION
-// =====================================================
-
 const CART_KEY = "gifthub_cart";
 
 const FREE_DELIVERY_LIMIT = 10000;
@@ -13,10 +9,6 @@ const DELIVERY_FEE = 350;
 const PROMO_CODES = {
   GIFTHUB10: 1000,
 };
-
-// =====================================================
-// GET CART
-// =====================================================
 
 export function getCart() {
   const savedCart = localStorage.getItem(CART_KEY);
