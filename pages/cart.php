@@ -262,9 +262,9 @@
 
 
     <script
-        type="module"
-        src="../js/cart.js">
-    </script>
+    type="module"
+    src="../js/cartPage.js">
+</script>
 
 </body>
 

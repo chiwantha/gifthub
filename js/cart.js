@@ -28,15 +28,8 @@ export function getCart() {
   }
 }
 
-// =====================================================
-// SAVE CART
-// =====================================================
-
 export function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
-
-  // Tell other components that cart changed
-
   window.dispatchEvent(
     new CustomEvent("cartUpdated", {
       detail: {
@@ -45,10 +38,6 @@ export function saveCart(cart) {
     }),
   );
 }
-
-// =====================================================
-// ADD TO CART
-// =====================================================
 
 export function addToCart(productId, quantity = 1) {
   const product = products.find((product) => product.id === productId);
@@ -81,10 +70,6 @@ export function addToCart(productId, quantity = 1) {
   return true;
 }
 
-// =====================================================
-// REMOVE FROM CART
-// =====================================================
-
 export function removeFromCart(productId) {
   const cart = getCart();
 
@@ -95,10 +80,6 @@ export function removeFromCart(productId) {
   return updatedCart;
 }
 
-// =====================================================
-// UPDATE CART QUANTITY
-// =====================================================
-
 export function updateCartQuantity(productId, quantity) {
   const cart = getCart();
 
@@ -107,9 +88,6 @@ export function updateCartQuantity(productId, quantity) {
   if (!item) {
     return cart;
   }
-
-  // If quantity becomes zero,
-  // remove the product.
 
   if (quantity <= 0) {
     return removeFromCart(productId);
@@ -121,10 +99,6 @@ export function updateCartQuantity(productId, quantity) {
 
   return cart;
 }
-
-// =====================================================
-// INCREASE QUANTITY
-// =====================================================
 
 export function increaseQuantity(productId) {
   const cart = getCart();
@@ -141,10 +115,6 @@ export function increaseQuantity(productId) {
 
   return cart;
 }
-
-// =====================================================
-// DECREASE QUANTITY
-// =====================================================
 
 export function decreaseQuantity(productId) {
   const cart = getCart();
@@ -166,25 +136,9 @@ export function decreaseQuantity(productId) {
   return cart;
 }
 
-// =====================================================
-// CLEAR CART
-// =====================================================
-
 export function clearCart() {
   saveCart([]);
 }
-
-// =====================================================
-// GET CART ITEM COUNT
-// =====================================================
-//
-// Example:
-//
-// Product A × 2
-// Product B × 3
-//
-// Result = 5
-//
 
 export function getCartItemCount() {
   const cart = getCart();
@@ -192,45 +146,11 @@ export function getCartItemCount() {
   return cart.reduce((total, item) => total + item.quantity, 0);
 }
 
-// =====================================================
-// GET CART PRODUCT COUNT
-// =====================================================
-//
-// Number of different products.
-//
-// Example:
-//
-// Product A × 2
-// Product B × 3
-//
-// Result = 2
-//
-
 export function getCartProductCount() {
   const cart = getCart();
 
   return cart.length;
 }
-
-// =====================================================
-// GET CART PRODUCTS
-// =====================================================
-//
-// Combines:
-//
-// cart data
-// +
-// products data
-//
-// Example:
-//
-// {
-//   id: 1,
-//   name: "...",
-//   price: 4990,
-//   quantity: 2
-// }
-//
 
 export function getCartProducts() {
   const cart = getCart();
@@ -256,19 +176,11 @@ export function getCartProducts() {
     .filter(Boolean);
 }
 
-// =====================================================
-// GET SUBTOTAL
-// =====================================================
-
 export function getCartSubtotal() {
   const cartProducts = getCartProducts();
 
   return cartProducts.reduce((total, product) => total + product.itemTotal, 0);
 }
-
-// =====================================================
-// GET DELIVERY FEE
-// =====================================================
 
 export function getDeliveryFee() {
   const subtotal = getCartSubtotal();
@@ -284,10 +196,6 @@ export function getDeliveryFee() {
   return DELIVERY_FEE;
 }
 
-// =====================================================
-// GET DISCOUNT
-// =====================================================
-
 export function getDiscount(promoCode = "") {
   const code = promoCode.trim().toUpperCase();
 
@@ -298,19 +206,11 @@ export function getDiscount(promoCode = "") {
   return PROMO_CODES[code] || 0;
 }
 
-// =====================================================
-// CHECK PROMO CODE
-// =====================================================
-
 export function isValidPromoCode(promoCode = "") {
   const code = promoCode.trim().toUpperCase();
 
   return Boolean(PROMO_CODES[code]);
 }
-
-// =====================================================
-// GET CART TOTAL
-// =====================================================
 
 export function getCartTotal(promoCode = "") {
   const subtotal = getCartSubtotal();
@@ -321,10 +221,6 @@ export function getCartTotal(promoCode = "") {
 
   return Math.max(subtotal + delivery - discount, 0);
 }
-
-// =====================================================
-// GET FULL CART SUMMARY
-// =====================================================
 
 export function getCartSummary(promoCode = "") {
   const subtotal = getCartSubtotal();
@@ -350,10 +246,6 @@ export function getCartSummary(promoCode = "") {
   };
 }
 
-// =====================================================
-// UPDATE NAVBAR CART COUNT
-// =====================================================
-
 export function updateCartCount() {
   const cartCount = document.querySelector("#cart-count");
 
@@ -368,28 +260,12 @@ export function updateCartCount() {
   cartCount.hidden = count === 0;
 }
 
-// =====================================================
-// FORMAT PRICE
-// =====================================================
-
 export function formatPrice(price) {
   return `LKR ${price.toLocaleString()}`;
 }
 
-// =====================================================
-// CART UPDATED EVENT
-// =====================================================
-//
-// If another page/component changes
-// the cart, update the navbar count.
-//
-
 window.addEventListener("cartUpdated", () => {
   updateCartCount();
 });
-
-// =====================================================
-// INITIAL CART COUNT
-// =====================================================
 
 updateCartCount();
