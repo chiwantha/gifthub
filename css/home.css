@@ -1,0 +1,290 @@
+/* ================= HERO ================= */
+
+.hero {
+  width: min(1200px, 92%);
+
+  min-height: 620px;
+
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+
+  align-items: center;
+
+  gap: 50px;
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.hero-tag {
+  display: inline-block;
+
+  margin-bottom: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #e85d75;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 6vw, 78px);
+
+  line-height: 1;
+
+  letter-spacing: -3px;
+}
+
+.hero h1 span {
+  color: #e85d75;
+}
+
+.hero p {
+  max-width: 520px;
+
+  margin-top: 25px;
+
+  font-size: 17px;
+
+  color: #766963;
+}
+
+.hero-actions {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 30px;
+}
+
+/* Hero visual */
+
+.hero-image {
+  min-height: 480px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 30px;
+
+  background: linear-gradient(135deg, #f5d8d5, #f9eee7);
+}
+
+.hero-card {
+  width: 230px;
+  height: 280px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 20px;
+
+  background: white;
+
+  border-radius: 20px;
+
+  box-shadow: 0 25px 60px rgba(70, 40, 30, 0.12);
+
+  transform: rotate(-5deg);
+}
+
+.hero-card span {
+  font-size: 90px;
+}
+
+.hero-card p {
+  font-weight: 700;
+}
+
+/* ================= CATEGORIES ================= */
+
+.category-grid {
+  display: grid;
+
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+.category-card {
+  padding: 25px 15px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #eee2dd;
+
+  border-radius: 15px;
+
+  transition: 0.25s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #e85d75;
+}
+
+.category-icon {
+  font-size: 35px;
+
+  margin-bottom: 12px;
+}
+
+.category-card h3 {
+  font-size: 15px;
+}
+
+.category-card p {
+  margin-top: 5px;
+
+  font-size: 11px;
+
+  color: #8d7f78;
+}
+
+/* ================= PROMO ================= */
+
+.promo-section {
+  width: min(1200px, 92%);
+
+  margin: 40px auto 90px;
+
+  padding: 80px;
+
+  border-radius: 25px;
+
+  background: #29201d;
+
+  color: white;
+}
+
+.promo-content {
+  max-width: 600px;
+}
+
+.promo-section h2 {
+  font-size: 50px;
+
+  line-height: 1.1;
+}
+
+.promo-section h2 span {
+  color: #f49aaa;
+}
+
+.promo-section p {
+  margin: 20px 0 30px;
+
+  color: #d8ccc8;
+}
+
+/* ================= BENEFITS ================= */
+
+.benefits-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.benefit-card {
+  padding: 30px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 1px solid #eee2dd;
+
+  border-radius: 18px;
+}
+
+.benefit-icon {
+  font-size: 35px;
+
+  margin-bottom: 15px;
+}
+
+.benefit-card h3 {
+  font-size: 17px;
+}
+
+.benefit-card p {
+  margin-top: 8px;
+
+  font-size: 13px;
+
+  color: #81736c;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 60px 0;
+  }
+
+  .hero-image {
+    min-height: 350px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .promo-section {
+    padding: 45px 25px;
+  }
+
+  .promo-section h2 {
+    font-size: 38px;
+  }
+}
