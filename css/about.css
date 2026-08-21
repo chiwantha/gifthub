@@ -1,0 +1,520 @@
+/* =====================================================
+   ABOUT HERO
+===================================================== */
+
+.about-hero {
+  padding: 100px 20px 110px;
+
+  background: linear-gradient(135deg, #f8e3df, #fffaf7);
+
+  text-align: center;
+}
+
+.about-hero-content {
+  width: min(850px, 92%);
+
+  margin: auto;
+}
+
+.about-hero h1 {
+  margin-top: 15px;
+
+  font-size: clamp(48px, 7vw, 78px);
+
+  line-height: 1.02;
+
+  letter-spacing: -4px;
+}
+
+.about-hero h1 span {
+  display: block;
+
+  color: #e85d75;
+}
+
+.about-hero p {
+  max-width: 650px;
+
+  margin: 25px auto 0;
+
+  color: #766963;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   STORY
+===================================================== */
+
+.about-story {
+  width: min(1200px, 92%);
+
+  margin: auto;
+
+  padding: 100px 0;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.about-story-image {
+  height: 560px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+}
+
+.about-story-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: 0.5s;
+}
+
+.about-story-image:hover img {
+  transform: scale(1.03);
+}
+
+.about-story-content h2 {
+  margin-top: 15px;
+
+  font-size: clamp(36px, 5vw, 52px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+}
+
+.about-story-content h2 span {
+  color: #e85d75;
+}
+
+.about-story-content p {
+  margin-top: 20px;
+
+  color: #766963;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   VALUES
+===================================================== */
+
+.values-section {
+  padding: 100px 20px;
+
+  background: #fffaf7;
+}
+
+.values-header {
+  width: min(700px, 92%);
+
+  margin: auto;
+
+  text-align: center;
+}
+
+.values-header h2 {
+  margin-top: 15px;
+
+  font-size: clamp(38px, 5vw, 55px);
+
+  letter-spacing: -2px;
+}
+
+.values-header h2 span {
+  color: #e85d75;
+}
+
+.values-header p {
+  margin-top: 15px;
+
+  color: #766963;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   VALUES GRID
+===================================================== */
+
+.values-grid {
+  width: min(1200px, 92%);
+
+  margin: 55px auto 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.value-card {
+  padding: 30px;
+
+  background: white;
+
+  border: 1px solid #eee2dd;
+
+  border-radius: 16px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 15px 35px rgba(65, 40, 30, 0.08);
+}
+
+.value-icon {
+  width: 55px;
+
+  height: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f8e3df;
+
+  border-radius: 12px;
+
+  font-size: 25px;
+}
+
+.value-card h3 {
+  margin-top: 22px;
+
+  font-size: 18px;
+}
+
+.value-card p {
+  margin-top: 10px;
+
+  color: #766963;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   MISSION
+===================================================== */
+
+.mission-section {
+  padding: 110px 20px;
+
+  background: #29201d;
+
+  color: white;
+
+  text-align: center;
+}
+
+.mission-content {
+  width: min(800px, 92%);
+
+  margin: auto;
+}
+
+.mission-content h2 {
+  margin-top: 15px;
+
+  font-size: clamp(40px, 6vw, 62px);
+
+  line-height: 1.05;
+
+  letter-spacing: -3px;
+}
+
+.mission-content h2 span {
+  color: #e85d75;
+}
+
+.mission-content p {
+  max-width: 650px;
+
+  margin: 25px auto;
+
+  color: #cfc3bd;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.about-button {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  padding: 14px 24px;
+
+  background: #e85d75;
+
+  color: white;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.25s ease,
+    transform 0.25s ease;
+}
+
+.about-button:hover {
+  background: white;
+
+  color: #29201d;
+
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   WHY GIFTHUB
+===================================================== */
+
+.why-section {
+  padding: 100px 20px;
+}
+
+.why-content {
+  width: min(1200px, 92%);
+
+  margin: auto;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+.why-text h2 {
+  margin-top: 15px;
+
+  font-size: clamp(36px, 5vw, 52px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+}
+
+.why-text h2 span {
+  color: #e85d75;
+}
+
+.why-text > p {
+  margin-top: 20px;
+
+  color: #766963;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   WHY LIST
+===================================================== */
+
+.why-list {
+  margin-top: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 22px;
+}
+
+.why-item {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 15px;
+}
+
+.why-item > span {
+  width: 28px;
+
+  height: 28px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f8e3df;
+
+  color: #e85d75;
+
+  border-radius: 50%;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.why-item strong {
+  font-size: 14px;
+}
+
+.why-item p {
+  margin-top: 5px;
+
+  color: #766963;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+/* =====================================================
+   WHY IMAGE
+===================================================== */
+
+.why-image {
+  height: 560px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+}
+
+.why-image img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.about-cta {
+  padding: 100px 20px;
+
+  background: linear-gradient(135deg, #f8e3df, #fffaf7);
+
+  text-align: center;
+}
+
+.about-cta-content {
+  width: min(750px, 92%);
+
+  margin: auto;
+}
+
+.about-cta h2 {
+  margin-top: 15px;
+
+  font-size: clamp(40px, 6vw, 60px);
+
+  line-height: 1.05;
+
+  letter-spacing: -3px;
+}
+
+.about-cta h2 span {
+  color: #e85d75;
+}
+
+.about-cta p {
+  margin: 20px auto;
+
+  color: #766963;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1000px) {
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .about-story,
+  .why-content {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .about-story-image,
+  .why-image {
+    height: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    padding: 75px 20px 80px;
+  }
+
+  .about-hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .about-story {
+    padding: 70px 0;
+  }
+
+  .about-story-image,
+  .why-image {
+    height: 350px;
+
+    border-radius: 15px;
+  }
+
+  .values-section,
+  .why-section {
+    padding: 70px 20px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+
+    margin-top: 40px;
+  }
+
+  .mission-section,
+  .about-cta {
+    padding: 75px 20px;
+  }
+}

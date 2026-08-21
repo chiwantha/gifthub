@@ -21,11 +21,11 @@
                 Categories
             </a>
 
-            <a href="#">
-                Occasions
+            <a href="/Gifthub/pages/contact.php">
+                Contact Us
             </a>
 
-            <a href="#">
+            <a href="/Gifthub/pages/about.php">
                 About Us
             </a>
 
