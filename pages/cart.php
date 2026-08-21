@@ -61,25 +61,66 @@
 
                     <div class="cart-items-header">
 
-                        <h2>
-                            Shopping Cart
-                        </h2>
+                        <div class="cart-title">
 
-                        <span id="cart-item-count">
-                            0 items
-                        </span>
+                            <h2>
+                                Shopping Cart
+                            </h2>
+
+                            <span id="cart-item-count">
+                                0 items
+                            </span>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="clear-cart"
+                            class="clear-cart-button">
+
+                            Clear Cart
+
+                        </button>
 
                     </div>
 
+
+                    <div 
+                    id="cart-items" 
+                    class="cart-items">
+
+                    <!-- Items inserted by JavaScript -->
+
+                    </div>
+
+                    <!-- ================= EMPTY CART ================= -->
 
                     <div
-                        id="cart-items"
-                        class="cart-items">
+                        id="empty-cart"
+                        class="empty-cart"
+                        hidden>
 
-                        <!-- Items inserted by JavaScript -->
+                        <div class="empty-cart-icon">
+                            🛒
+                        </div>
+
+                        <h2>
+                            Your cart is empty
+                        </h2>
+
+                        <p>
+                            Looks like you haven't added any gifts yet.
+                        </p>
+
+                        <a
+                            href="shop.php"
+                            class="btn btn-primary">
+
+                            Start Shopping
+
+                        </a>
 
                     </div>
-
 
                     <!-- CONTINUE SHOPPING -->
 
@@ -220,36 +261,6 @@
                     </div>
 
                 </aside>
-
-            </div>
-
-
-            <!-- ================= EMPTY CART ================= -->
-
-            <div
-                id="empty-cart"
-                class="empty-cart"
-                hidden>
-
-                <div class="empty-cart-icon">
-                    🛒
-                </div>
-
-                <h2>
-                    Your cart is empty
-                </h2>
-
-                <p>
-                    Looks like you haven't added any gifts yet.
-                </p>
-
-                <a
-                    href="shop.php"
-                    class="btn btn-primary">
-
-                    Start Shopping
-
-                </a>
 
             </div>
 

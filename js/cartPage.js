@@ -34,6 +34,8 @@ const applyPromoButton = document.getElementById("apply-promo");
 
 const checkoutButton = document.getElementById("checkout-button");
 
+const clearCartButton = document.getElementById("clear-cart");
+
 let activePromoCode = "";
 
 function renderCart() {
@@ -289,6 +291,46 @@ checkoutButton.addEventListener("click", () => {
   }
 
   window.location.href = "checkout.php";
+});
+
+clearCartButton.addEventListener("click", () => {
+  const cartProducts = getCartProducts();
+
+  if (cartProducts.length === 0) {
+    return;
+  }
+
+  const confirmed = confirm("Are you sure you want to clear your cart?");
+
+  if (!confirmed) {
+    return;
+  }
+
+  // Clear localStorage
+  clearCart();
+
+  // Immediately remove items from the UI
+  cartItemsContainer.innerHTML = "";
+
+  // Hide cart items
+  cartItemsContainer.hidden = true;
+
+  // Show empty cart
+  emptyCart.hidden = false;
+
+  // Hide clear button
+  clearCartButton.hidden = true;
+
+  // Reset count
+  cartItemCount.textContent = "0 items";
+
+  // Reset summary
+  cartSubtotal.textContent = "LKR 0";
+  cartDelivery.textContent = "LKR 0";
+  cartTotal.textContent = "LKR 0";
+
+  // Hide discount
+  discountRow.hidden = true;
 });
 
 window.addEventListener("cartUpdated", () => {

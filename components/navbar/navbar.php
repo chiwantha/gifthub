@@ -43,8 +43,13 @@
             </button>
 
             <a href="/GiftHub/pages/cart.php" class="cart-button">
+
                 🛒
-                <span>0</span>
+
+                <span id="cart-count" hidden>
+                    0
+                </span>
+
             </a>
 
         </div>
