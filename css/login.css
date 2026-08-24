@@ -1,0 +1,531 @@
+/* =====================================================
+   LOGIN HERO
+===================================================== */
+
+.login-hero {
+  padding: 85px 20px;
+
+  background: linear-gradient(135deg, #f8e3df, #fffaf7);
+
+  text-align: center;
+}
+
+.login-hero-content {
+  width: min(800px, 92%);
+
+  margin: auto;
+}
+
+.login-hero h1 {
+  margin-top: 15px;
+
+  font-size: clamp(48px, 7vw, 72px);
+
+  line-height: 1;
+
+  letter-spacing: -4px;
+}
+
+.login-hero h1 span {
+  color: #e85d75;
+}
+
+.login-hero p {
+  max-width: 600px;
+
+  margin: 20px auto 0;
+
+  color: #766963;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   LOGIN SECTION
+===================================================== */
+
+.login-section {
+  width: min(1100px, 92%);
+
+  margin: auto;
+
+  padding: 90px 0 110px;
+}
+
+.login-layout {
+  display: grid;
+
+  grid-template-columns: 0.85fr 1.15fr;
+
+  gap: 70px;
+
+  align-items: center;
+}
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.login-intro h2 {
+  margin-top: 15px;
+
+  font-size: clamp(38px, 5vw, 55px);
+
+  line-height: 1.05;
+
+  letter-spacing: -2px;
+}
+
+.login-intro h2 span {
+  display: block;
+
+  color: #e85d75;
+}
+
+.login-intro > p {
+  margin-top: 20px;
+
+  color: #766963;
+
+  line-height: 1.8;
+}
+
+/* =====================================================
+   BENEFITS
+===================================================== */
+
+.login-benefits {
+  margin-top: 40px;
+}
+
+.login-benefit {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
+}
+
+.benefit-icon {
+  width: 45px;
+
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f8e3df;
+
+  border-radius: 11px;
+
+  font-size: 20px;
+}
+
+.login-benefit strong {
+  display: block;
+
+  font-size: 14px;
+}
+
+.login-benefit p {
+  margin-top: 4px;
+
+  color: #766963;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =====================================================
+   LOGIN CARD
+===================================================== */
+
+.login-card {
+  min-height: 480px;
+
+  padding: 35px;
+
+  background: white;
+
+  border: 1px solid #eee2dd;
+
+  border-radius: 18px;
+
+  box-shadow: 0 15px 40px rgba(65, 40, 30, 0.06);
+}
+
+/* =====================================================
+   CARD HEADER
+===================================================== */
+
+.login-card-header h2 {
+  font-size: 27px;
+
+  letter-spacing: -1px;
+}
+
+.login-card-header p {
+  margin-top: 7px;
+
+  color: #766963;
+
+  font-size: 12px;
+}
+
+.login-card-header a {
+  color: #e85d75;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+.login-error {
+  margin-top: 20px;
+
+  padding: 11px 13px;
+
+  background: #fff0f2;
+
+  border: 1px solid #f3c4cc;
+
+  border-radius: 7px;
+
+  color: #d94560;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.login-error[hidden] {
+  display: none;
+}
+
+/* =====================================================
+   SUCCESS MESSAGE
+===================================================== */
+
+.login-success-message {
+  margin-top: 20px;
+
+  padding: 11px 13px;
+
+  background: #e8f6ee;
+
+  border: 1px solid #c6e8d4;
+
+  border-radius: 7px;
+
+  color: #32845b;
+
+  font-size: 12px;
+}
+
+.login-success-message[hidden] {
+  display: none;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.login-form {
+  margin-top: 30px;
+}
+
+.form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  color: #29201d;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.form-group input {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 13px;
+
+  border: 1px solid #e1d5d0;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: white;
+
+  color: #29201d;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  transition: 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #e85d75;
+
+  box-shadow: 0 0 0 3px rgba(232, 93, 117, 0.1);
+}
+
+/* =====================================================
+   PASSWORD
+===================================================== */
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 45px;
+}
+
+.toggle-password {
+  position: absolute;
+
+  top: 50%;
+
+  right: 12px;
+
+  transform: translateY(-50%);
+
+  padding: 4px;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  opacity: 0.6;
+}
+
+.toggle-password:hover {
+  opacity: 1;
+}
+
+/* =====================================================
+   OPTIONS
+===================================================== */
+
+.login-options {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+}
+
+.remember-me {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #766963;
+
+  cursor: pointer;
+}
+
+.remember-me input {
+  accent-color: #e85d75;
+}
+
+.forgot-password {
+  color: #e85d75;
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   LOGIN BUTTON
+===================================================== */
+
+.login-submit {
+  width: 100%;
+
+  margin-top: 25px;
+
+  padding: 15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #e85d75;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s;
+}
+
+.login-submit:hover {
+  background: #29201d;
+
+  transform: translateY(-2px);
+}
+
+/* =====================================================
+   NOTE
+===================================================== */
+
+.login-note {
+  margin-top: 14px;
+
+  text-align: center;
+
+  color: #8d7f78;
+
+  font-size: 10px;
+}
+
+/* =====================================================
+   SUCCESS PAGE
+===================================================== */
+
+.login-success-page {
+  min-height: 480px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 20px;
+}
+
+.login-success-page[hidden] {
+  display: none;
+}
+
+.success-icon {
+  width: 70px;
+
+  height: 70px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  margin-bottom: 25px;
+
+  background: #e8f6ee;
+
+  border-radius: 50%;
+
+  color: #32845b;
+
+  font-size: 32px;
+
+  font-weight: 700;
+}
+
+.login-success-page h2 {
+  margin-top: 15px;
+
+  font-size: 32px;
+
+  letter-spacing: -1px;
+}
+
+.login-success-page h2 span {
+  color: #e85d75;
+}
+
+.login-success-page p {
+  max-width: 400px;
+
+  margin-top: 12px;
+
+  color: #766963;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+
+    gap: 50px;
+  }
+
+  .login-intro {
+    text-align: center;
+  }
+
+  .login-benefit {
+    text-align: left;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-hero {
+    padding: 70px 20px;
+  }
+
+  .login-section {
+    padding: 60px 0 80px;
+  }
+
+  .login-card {
+    padding: 23px;
+  }
+
+  .login-options {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 10px;
+  }
+}
