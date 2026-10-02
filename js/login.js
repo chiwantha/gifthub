@@ -8,8 +8,6 @@ const loginForm = document.getElementById("login-form");
 
 const loginError = document.getElementById("login-error");
 
-const loginSuccess = document.getElementById("login-success");
-
 const loginFormWrapper = document.getElementById("login-form-wrapper");
 
 const successPage = document.getElementById("login-success-page");
@@ -21,83 +19,132 @@ const togglePassword = document.getElementById("toggle-password");
 const passwordInput = document.getElementById("password");
 
 // =====================================================
+// CHECK ELEMENTS
+// =====================================================
+
+if (!loginForm) {
+  console.error("GiftHub: Login form not found.");
+}
+
+// =====================================================
 // PASSWORD SHOW / HIDE
 // =====================================================
 
-togglePassword.addEventListener("click", () => {
-  const isPassword = passwordInput.type === "password";
+if (togglePassword && passwordInput) {
+  togglePassword.addEventListener("click", () => {
+    const isPassword = passwordInput.type === "password";
 
-  if (isPassword) {
-    passwordInput.type = "text";
+    if (isPassword) {
+      passwordInput.type = "text";
 
-    togglePassword.textContent = "🙈";
+      togglePassword.textContent = "🙈";
 
-    togglePassword.setAttribute("aria-label", "Hide password");
-  } else {
-    passwordInput.type = "password";
+      togglePassword.setAttribute("aria-label", "Hide password");
+    } else {
+      passwordInput.type = "password";
 
-    togglePassword.textContent = "👁";
+      togglePassword.textContent = "👁";
 
-    togglePassword.setAttribute("aria-label", "Show password");
-  }
-});
+      togglePassword.setAttribute("aria-label", "Show password");
+    }
+  });
+}
 
 // =====================================================
 // LOGIN
 // =====================================================
 
-loginForm.addEventListener("submit", (event) => {
-  event.preventDefault();
+if (loginForm) {
+  loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  // ================= VALUES =================
+    // =================================================
+    // GET VALUES
+    // =================================================
 
-  const username = document.getElementById("username").value.trim();
+    const username = document.getElementById("username").value.trim();
 
-  const password = passwordInput.value;
+    const password = passwordInput.value;
 
-  hideError();
+    // =================================================
+    // CLEAR PREVIOUS ERROR
+    // =================================================
 
-  // ================= LOGIN =================
+    hideError();
 
-  const user = loginUser(username, password);
+    // =================================================
+    // VALIDATION
+    // =================================================
 
-  // ================= INVALID =================
+    if (!username || !password) {
+      showError("Please enter your username and password.");
 
-  if (!user) {
-    showError("Invalid username or password. Please try again.");
-
-    return;
-  }
-
-  // ================= SUCCESS =================
-
-  loginFormWrapper.hidden = true;
-
-  successPage.hidden = false;
-
-  if (user.role === "admin") {
-    successText.textContent =
-      "Welcome back, Admin. Redirecting to the GiftHub admin dashboard...";
-  } else {
-    successText.textContent = `Welcome back, ${user.firstName}! Redirecting you to GiftHub...`;
-  }
-
-  // ================= REDIRECT =================
-
-  setTimeout(() => {
-    if (user.role === "admin") {
-      window.location.href = "../admin/index.php";
-    } else {
-      window.location.href = "../index.php";
+      return;
     }
-  }, 1200);
-});
+
+    // =================================================
+    // LOGIN
+    // =================================================
+
+    const user = loginUser(username, password);
+
+    // =================================================
+    // INVALID LOGIN
+    // =================================================
+
+    if (!user) {
+      showError("Invalid username or password. Please try again.");
+
+      return;
+    }
+
+    // =================================================
+    // LOGIN SUCCESS
+    // =================================================
+
+    loginFormWrapper.hidden = true;
+
+    successPage.hidden = false;
+
+    // =================================================
+    // ADMIN LOGIN
+    // =================================================
+
+    if (user.isAdmin === true) {
+      successText.textContent =
+        "Welcome back, Admin. Redirecting to the GiftHub admin dashboard...";
+    }
+
+    // =================================================
+    // NORMAL USER LOGIN
+    // =================================================
+    else {
+      successText.textContent = `Welcome back, ${user.firstName}! Redirecting you to GiftHub...`;
+    }
+
+    // =================================================
+    // REDIRECT
+    // =================================================
+
+    setTimeout(() => {
+      if (user.isAdmin === true) {
+        window.location.href = "./admin/index.php";
+      } else {
+        window.location.href = "../cart.php";
+      }
+    }, 1200);
+  });
+}
 
 // =====================================================
 // SHOW ERROR
 // =====================================================
 
 function showError(message) {
+  if (!loginError) {
+    return;
+  }
+
   loginError.textContent = message;
 
   loginError.hidden = false;
@@ -108,7 +155,11 @@ function showError(message) {
 // =====================================================
 
 function hideError() {
-  loginError.hidden = true;
+  if (!loginError) {
+    return;
+  }
 
   loginError.textContent = "";
+
+  loginError.hidden = true;
 }

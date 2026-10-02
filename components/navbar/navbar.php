@@ -21,11 +21,11 @@
                 Categories
             </a>
 
-            <a href="/Gifthub/pages/contact.php">
+            <a href="/GiftHub/pages/contact.php">
                 Contact Us
             </a>
 
-            <a href="/Gifthub/pages/about.php">
+            <a href="/GiftHub/pages/about.php">
                 About Us
             </a>
 
@@ -34,20 +34,55 @@
 
         <div class="nav-actions">
 
-            <button class="nav-icon">
+            <!-- Search -->
+
+            <button
+                type="button"
+                class="nav-icon"
+                aria-label="Search">
+
                 🔍
+
             </button>
 
-            <button class="nav-icon">
+
+            <!-- Wishlist -->
+
+            <button
+                type="button"
+                class="nav-icon"
+                aria-label="Wishlist">
+
                 ♡
+
             </button>
 
-            <a href="/GiftHub/pages/cart.php" class="cart-button">
+
+            <!-- Sign In -->
+
+            <a
+                href="/GiftHub/pages/login.php"
+                class="nav-signin">
+
+                Sign In
+
+            </a>
+
+
+            <!-- Cart -->
+
+            <a
+                href="/GiftHub/pages/cart.php"
+                class="cart-button">
 
                 🛒
 
-                <span id="cart-count" hidden>
+                <span
+                    id="cart-count"
+                    hidden>
+
                     0
+
                 </span>
 
             </a>

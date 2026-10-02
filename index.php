@@ -62,8 +62,9 @@
 
             <div class="hero-image">
 
-                <div class="hero-card">
-                    <img src="./img.png" alt="image.png"  />
+               <div class="hero-card">
+                    <span>🎁</span>
+                    <p>Find the perfect gift</p>
                 </div>
 
             </div>

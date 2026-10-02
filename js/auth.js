@@ -1,15 +1,10 @@
 import { users as defaultUsers } from "../data/users.js";
 
 // =====================================================
-// STORAGE KEY
+// STORAGE KEYS
 // =====================================================
 
 const USERS_KEY = "gifthub_users";
-
-// =====================================================
-// AUTH KEY
-// =====================================================
-
 const AUTH_KEY = "gifthub_auth";
 
 // =====================================================
@@ -19,7 +14,9 @@ const AUTH_KEY = "gifthub_auth";
 export function getUsers() {
   const savedUsers = localStorage.getItem(USERS_KEY);
 
-  // No registered users yet
+  // ===================================================
+  // NO SAVED USERS
+  // ===================================================
 
   if (!savedUsers) {
     return [...defaultUsers];
@@ -28,7 +25,27 @@ export function getUsers() {
   try {
     const users = JSON.parse(savedUsers);
 
-    return Array.isArray(users) ? users : [...defaultUsers];
+    if (!Array.isArray(users)) {
+      return [...defaultUsers];
+    }
+
+    // =================================================
+    // DEFAULT USERS
+    // =================================================
+    // Keep the users from users.js as the source of
+    // truth for the demo accounts.
+    //
+    // This prevents old localStorage data from changing
+    // things like isAdmin.
+    // =================================================
+
+    const defaultUserIds = defaultUsers.map((user) => user.id);
+
+    const registeredUsers = users.filter(
+      (user) => !defaultUserIds.includes(user.id),
+    );
+
+    return [...defaultUsers, ...registeredUsers];
   } catch (error) {
     console.error("GiftHub: Failed to load users", error);
 
@@ -45,34 +62,76 @@ export function saveUsers(users) {
 }
 
 // =====================================================
+// REGISTER USER
+// =====================================================
+
+export function registerUser(userData) {
+  const users = getUsers();
+
+  // Check username
+  const usernameExists = users.some(
+    (user) => user.username.toLowerCase() === userData.username.toLowerCase(),
+  );
+
+  if (usernameExists) {
+    return {
+      success: false,
+      message: "Username already exists.",
+    };
+  }
+
+  // Check email
+  const emailExists = users.some(
+    (user) => user.email.toLowerCase() === userData.email.toLowerCase(),
+  );
+
+  if (emailExists) {
+    return {
+      success: false,
+      message: "Email already exists.",
+    };
+  }
+
+  // Generate new ID
+  const newId =
+    users.length > 0 ? Math.max(...users.map((user) => user.id)) + 1 : 1;
+
+  const newUser = {
+    id: newId,
+
+    firstName: userData.firstName,
+
+    lastName: userData.lastName,
+
+    username: userData.username,
+
+    email: userData.email,
+
+    password: userData.password,
+
+    image:
+      userData.image ||
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+
+    // Normal registered users are NEVER admins
+    isAdmin: false,
+  };
+
+  users.push(newUser);
+
+  saveUsers(users);
+
+  return {
+    success: true,
+    user: newUser,
+  };
+}
+
+// =====================================================
 // LOGIN USER
 // =====================================================
 
 export function loginUser(username, password) {
-  // ================= ADMIN =================
-
-  if (username === "admin" && password === "admin") {
-    const admin = {
-      id: 0,
-
-      firstName: "GiftHub",
-
-      lastName: "Admin",
-
-      username: "admin",
-
-      email: "admin@gifthub.lk",
-
-      role: "admin",
-    };
-
-    saveAuth(admin);
-
-    return admin;
-  }
-
-  // ================= NORMAL USERS =================
-
   const users = getUsers();
 
   const user = users.find(
@@ -81,14 +140,28 @@ export function loginUser(username, password) {
       user.password === password,
   );
 
+  // Invalid login
   if (!user) {
     return null;
   }
 
+  // Create logged-in user object
   const loggedUser = {
-    ...user,
+    id: user.id,
 
-    role: "user",
+    firstName: user.firstName,
+
+    lastName: user.lastName,
+
+    username: user.username,
+
+    email: user.email,
+
+    image: user.image,
+
+    isAdmin: Boolean(user.isAdmin),
+
+    role: user.isAdmin ? "admin" : "user",
   };
 
   saveAuth(loggedUser);
@@ -118,6 +191,8 @@ export function getAuthUser() {
   try {
     return JSON.parse(savedAuth);
   } catch (error) {
+    console.error("GiftHub: Failed to load auth", error);
+
     return null;
   }
 }
@@ -127,7 +202,41 @@ export function getAuthUser() {
 // =====================================================
 
 export function isLoggedIn() {
-  return Boolean(getAuthUser());
+  return getAuthUser() !== null;
+}
+
+// =====================================================
+// IS ADMIN
+// =====================================================
+
+export function isAdmin() {
+  const user = getAuthUser();
+
+  return user?.isAdmin === true;
+}
+
+// =====================================================
+// IS NORMAL USER
+// =====================================================
+
+export function isUser() {
+  const user = getAuthUser();
+
+  return user?.isAdmin === false;
+}
+
+// =====================================================
+// GET USER ROLE
+// =====================================================
+
+export function getUserRole() {
+  const user = getAuthUser();
+
+  if (!user) {
+    return null;
+  }
+
+  return user.isAdmin ? "admin" : "user";
 }
 
 // =====================================================
@@ -139,21 +248,41 @@ export function logout() {
 }
 
 // =====================================================
-// IS ADMIN
+// REQUIRE LOGIN
 // =====================================================
 
-export function isAdmin() {
-  const user = getAuthUser();
+export function requireLogin() {
+  if (!isLoggedIn()) {
+    window.location.href = "../login.php";
 
-  return user?.role === "admin";
+    return false;
+  }
+
+  return true;
 }
 
 // =====================================================
-// IS NORMAL USER
+// REQUIRE ADMIN
 // =====================================================
 
-export function isUser() {
-  const user = getAuthUser();
+// =====================================================
+// REQUIRE ADMIN
+// =====================================================
 
-  return user?.role === "user";
+export function requireAdmin() {
+  // Not logged in
+  if (!isLoggedIn()) {
+    window.location.href = "../login.php";
+
+    return false;
+  }
+
+  // Logged in but not admin
+  if (!isAdmin()) {
+    window.location.href = "../../index.php";
+
+    return false;
+  }
+
+  return true;
 }
